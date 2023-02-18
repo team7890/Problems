@@ -1,0 +1,51 @@
+ *  Executing task: gradlew deploy  -PteamNumber=7890 --offline  -Dorg.gradle.java.home="C:\Users\Public\wpilib\2023\jdk" 
+
+Starting a Gradle Daemon, 2 incompatible and 1 stopped Daemons could not be reused, use --status for details
+Driver Station reported IP: 10.78.90.2
+
+> Task :discoverroborio
+Discovering Target roborio
+Using admin@10.78.90.2:22 for target roborio
+
+> Task :deployprogramKillroborioroborio
+    -C-> . /etc/profile.d/natinst-path.sh; /usr/local/frc/bin/frcKillRobot.sh -t 2> /dev/null @ /home/lvuser
+
+> Task :deployrobotCommandfrcJavaroborio
+    -C-> echo '/usr/local/frc/JRE/bin/java -XX:+UseG1GC -XX:MaxGCPauseMillis=1 -XX:GCTimeRatio=1 -XX:+AlwaysPreTouch -Djava.lang.invoke.stringConcat=BC_SB -Djava.library.path=/usr/local/frc/third-party/lib -jar "/home/lvuser/2023_frc.jar" ' > /home/lvuser/robotCommand @ /home/lvuser
+    -C-> chmod +x /home/lvuser/robotCommand; chown lvuser /home/lvuser/robotCommand @ /home/lvuser
+
+> Task :deployjrefrcJavaroborio
+    -C-> if [[ -f "/usr/local/frc/JRE/bin/java" ]]; then echo OK; else echo MISSING; fi @ /tmp
+      -[0]-> OK
+
+    -C-> opkg list-installed | grep openjdk @ /tmp
+      -[0]-> frc2023-openjdk-17-jre - 17.0.5u7-1 - FRC OpenJDK Java Runtime Environment
+
+  Searching for JRE 17.0.5u7-1
+  Found JRE frc2023-openjdk-17-jre - 17.0.5u7-1 - FRC OpenJDK Java Runtime Environment
+  JRE Is Correct Version
+  Artifact skipped
+
+> Task :deployfrcStaticFileDeployroborio
+    -C-> mkdir -p  @ /home/lvuser/deploy
+      -[-1]
+    2 file(s) are up-to-date and were not deployed
+
+> Task :deployfrcJavaroborio
+    1 file(s) are up-to-date and were not deployed
+    -C-> chmod +x "/home/lvuser/2023_frc.jar"; chown lvuser "/home/lvuser/2023_frc.jar" @ /home/lvuser
+
+> Task :deploynativeZipsfrcJavaroborio
+    33 file(s) are up-to-date and were not deployed
+    -C-> chmod -R 777 "/usr/local/frc/third-party/lib" || true; chown -R lvuser:ni "/usr/local/frc/third-party/lib" @ /usr/local/frc/third-party/lib
+    -C-> ldconfig @ /usr/local/frc/third-party/lib
+      -[-1]
+
+> Task :deployprogramStartfrcJavaroborio
+    -C-> sync @ /home/lvuser
+      -[-1]
+    -C-> . /etc/profile.d/natinst-path.sh; /usr/local/frc/bin/frcKillRobot.sh -t -r 2> /dev/null @ /home/lvuser
+
+BUILD SUCCESSFUL in 15s
+13 actionable tasks: 11 executed, 2 up-to-date
+ *  Terminal will be reused by tasks, press any key to close it. 
